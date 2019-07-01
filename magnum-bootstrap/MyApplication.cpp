@@ -30,7 +30,13 @@
 #include <Magnum/GL/Buffer.h>
 #include <Magnum/GL/DefaultFramebuffer.h>
 #include <Magnum/GL/Mesh.h>
+#ifdef CORRADE_TARGET_ANDROID
+#include <Magnum/Platform/AndroidApplication.h>
+#elif defined(CORRADE_TARGET_EMSCRIPTEN)
+#include <Magnum/Platform/EmscriptenApplication.h>
+#else
 #include <Magnum/Platform/Sdl2Application.h>
+#endif
 #include <Magnum/Shaders/VertexColor.h>
 
 namespace Magnum { namespace Examples {
@@ -40,6 +46,7 @@ class TriangleExample: public Platform::Application {
         explicit TriangleExample(const Arguments& arguments);
 
     private:
+        void viewportEvent(ViewportEvent& event) override;
         void drawEvent() override;
 
         GL::Mesh _mesh;
@@ -47,7 +54,12 @@ class TriangleExample: public Platform::Application {
 };
 
 TriangleExample::TriangleExample(const Arguments& arguments):
-    Platform::Application{arguments, Configuration{}.setTitle("Magnum Triangle Example")}
+    Platform::Application{arguments, Configuration{}
+        .setTitle("Magnum Triangle Example")
+        #ifndef CORRADE_TARGET_ANDROID
+        .setWindowFlags(Configuration::WindowFlag::Resizable)
+        #endif
+        }
 {
     using namespace Math::Literals;
 
@@ -68,6 +80,10 @@ TriangleExample::TriangleExample(const Arguments& arguments):
          .addVertexBuffer(std::move(buffer), 0,
             Shaders::VertexColor2D::Position{},
             Shaders::VertexColor2D::Color3{});
+}
+
+void TriangleExample::viewportEvent(ViewportEvent& event) {
+    GL::defaultFramebuffer.setViewport({{}, event.framebufferSize()});
 }
 
 void TriangleExample::drawEvent() {
