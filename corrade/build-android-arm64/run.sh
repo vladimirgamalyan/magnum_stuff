@@ -1,4 +1,5 @@
 cmake .. \
+	-DCMAKE_ANDROID_NDK=/opt/android-ndk \
     -DCMAKE_SYSTEM_NAME=Android \
     -DCMAKE_SYSTEM_VERSION=28 \
     -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
