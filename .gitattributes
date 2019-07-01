@@ -2,3 +2,5 @@
 *.h		text eol=lf
 *.c		text eol=lf
 *.cpp	text eol=lf
+*.txt	text eol=lf
+*.gradle	text eol=lf
