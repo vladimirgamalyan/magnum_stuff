@@ -11,11 +11,11 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
-        minSdkVersion 26
+        minSdkVersion 23
 
         externalNativeBuild {
             cmake {
@@ -23,7 +23,7 @@ android {
             }
         }
         ndk {
-            abiFilters 'arm64-v8a'
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
     }
 
@@ -44,4 +44,3 @@ allprojects {
 wrapper() {
   gradleVersion = '5.5'
 }
-

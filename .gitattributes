@@ -4,3 +4,5 @@
 *.cpp	text eol=lf
 *.txt	text eol=lf
 *.gradle	text eol=lf
+*.properties	text eol=lf
+*.xml	text eol=lf
