@@ -4,4 +4,6 @@ cmake .. \
     -DCMAKE_PREFIX_PATH=/usr/lib/emscripten/system \
     -DCMAKE_INSTALL_PREFIX=/usr/lib/emscripten/system \
     -DMAGNUM_DEPLOY_PREFIX=/srv/http/magnum \
-    -DWITH_SDL2APPLICATION=ON
+    -DWITH_SDL2APPLICATION=ON \
+	-DWITH_EMSCRIPTENAPPLICATION=ON
+
