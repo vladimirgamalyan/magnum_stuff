@@ -1,6 +1,9 @@
 find_package(Magnum REQUIRED GL Shaders)
 
-include(UseAndroid)
+if(CORRADE_TARGET_ANDROID AND CMAKE_ANDROID_NDK)
+    list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/toolchains/modules/")
+    include(UseAndroid)
+endif()
 
 if(NOT CORRADE_TARGET_ANDROID)
     find_package(Magnum REQUIRED Sdl2Application)
