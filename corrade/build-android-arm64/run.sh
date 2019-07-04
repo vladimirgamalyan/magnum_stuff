@@ -1,10 +1,10 @@
 cmake .. \
     -DCMAKE_ANDROID_NDK=/opt/android-ndk \
     -DCMAKE_SYSTEM_NAME=Android \
-    -DCMAKE_SYSTEM_VERSION=21 \
+    -DCMAKE_SYSTEM_VERSION=22 \
     -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
     -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang \
     -DCMAKE_ANDROID_STL_TYPE=c++_static \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/android-ndk/platforms/android-21/arch-arm64/usr \
+    -DCMAKE_INSTALL_PREFIX=/opt/android-ndk/platforms/android-22/arch-arm64/usr \
     -DCORRADE_INCLUDE_INSTALL_PREFIX=/opt/android-ndk/sysroot/usr
