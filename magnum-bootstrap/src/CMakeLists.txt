@@ -17,7 +17,9 @@ if(NOT CORRADE_TARGET_ANDROID)
     add_executable(MyApplication MyApplication.cpp)
 else()
     add_library(MyApplication SHARED MyApplication.cpp)
-    android_create_apk(MyApplication main/AndroidManifest.xml)
+    if(CMAKE_ANDROID_NDK)
+        android_create_apk(MyApplication main/AndroidManifest.xml)
+    endif()
 endif()
 
 target_link_libraries(MyApplication PRIVATE
